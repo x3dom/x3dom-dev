@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7506
- * Revision: 84a7caf91895ba6888b61a2870c6a9bfbf4c248a
- * Date: Wed Aug 28 00:37:15 2024 -0400
+ * Build : 7508
+ * Revision: 6df4e397aeea7c90534bb7dd3361f6d891cae9bc
+ * Date: Fri Oct 4 11:31:13 2024 +0200
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7506",
-    revision : "84a7caf91895ba6888b61a2870c6a9bfbf4c248a",
-    date     : "Wed Aug 28 00:37:15 2024 -0400"
+    build    : "7508",
+    revision : "6df4e397aeea7c90534bb7dd3361f6d891cae9bc",
+    date     : "Fri Oct 4 11:31:13 2024 +0200"
 };
 
 /**
@@ -13566,7 +13566,7 @@ x3dom.gfx_webgl = ( function ()
                         geoNode._mesh._numBinormalComponents,
                         shape._webgl.binormalType, false,
                         shape._binormalStrideOffset[ 0 ], shape._binormalStrideOffset[ 1 ] );
-                    gl.enableVertexAttribArray( sp.tangent );
+                    gl.enableVertexAttribArray( sp.binormal );
 
                     binormals = null;
                 }

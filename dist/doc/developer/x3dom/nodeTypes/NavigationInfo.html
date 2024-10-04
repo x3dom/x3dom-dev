@@ -154,7 +154,9 @@
             </h2>
 
         
-        <div class="class-description">NavigationInfo describes the viewing model and physical characteristics of the viewer's avatar.Hint: for inspection of simple objects, usability often improves with type='EXAMINE' 'ANY' Hint: NavigationInfo types ''WALK' 'FLY'' support camera-to-object collision detection.Background, Fog, NavigationInfo, TextureBackground and Viewpoint are bindable nodes.</div>
+        <div class="class-description">NavigationInfo describes the viewing model and physical characteristics of the viewer's avatar.
+Hint: for inspection of simple objects, usability often improves with type='EXAMINE' 'ANY' Hint: NavigationInfo types ''WALK' 'FLY'' support camera-to-object collision detection.
+Background, Fog, NavigationInfo, TextureBackground and Viewpoint are bindable nodes.</div>
         
     </header>
 
@@ -426,7 +428,12 @@
                 
             </td>
 
-            <td>avatarSize triplet values are:(a) collision distance between user and geometry (near culling plane of the view frustrum)(b) viewer height above terrain(c) tallest height viewer can WALK over.Hint: keep (avatarSize.CollisionDistance / visibilityLimit) less then; 10,000 to avoid aliasing artifacts (i.e. polygon 'tearing').Interchange profile hint: this field may be ignored.</td>
+            <td>avatarSize triplet values are:
+(a) collision distance between user and geometry (near culling plane of the view frustrum)
+(b) viewer height above terrain
+(c) tallest height viewer can WALK over.
+Hint: keep (avatarSize.CollisionDistance / visibilityLimit) less then; 10,000 to avoid aliasing artifacts (i.e. polygon 'tearing').
+Interchange profile hint: this field may be ignored.</td>
         </tr>
         
         <tr>
@@ -490,7 +497,8 @@
                 
             </td>
 
-            <td>Event sent reporting timestamp when node becomes active/inactive.Only appears in messages</td>
+            <td>Event sent reporting timestamp when node becomes active/inactive.
+Only appears in messages</td>
         </tr>
         
         <tr>
@@ -646,7 +654,9 @@
                 
             </td>
 
-            <td>Output event true gets sent when node becomes bound and activated,otherwise output event false gets sent when node becomes unbound and deactivated.Only appears in messages</td>
+            <td>Output event true gets sent when node becomes bound and activated,
+otherwise output event false gets sent when node becomes unbound and deactivated.
+Only appears in messages</td>
         </tr>
         
         <tr>
@@ -738,7 +748,9 @@
                 
             </td>
 
-            <td>Default rate at which viewer travels through scene, meters/second.Warning: default 1 m/s usually seems slow for ordinary navigation.Interchange profile hint: this field may be ignored.</td>
+            <td>Default rate at which viewer travels through scene, meters/second.
+Warning: default 1 m/s usually seems slow for ordinary navigation.
+Interchange profile hint: this field may be ignored.</td>
         </tr>
         
         <tr>
@@ -888,7 +900,11 @@
                 
             </td>
 
-            <td>Geometry beyond the visibilityLimit may not be rendered (far culling plane of the view frustrum).visibilityLimit=0.0 indicates an infinite visibility limit.Hint: keep visibilityLimit greater than zero.Hint: keep (avatarSize.CollisionDistance / visibilityLimit) less than 10,000 to avoid aliasing artifacts (i.e. polygon 'tearing').Interchange profile hint: this field may be ignored.</td>
+            <td>Geometry beyond the visibilityLimit may not be rendered (far culling plane of the view frustrum).
+visibilityLimit=0.0 indicates an infinite visibility limit.
+Hint: keep visibilityLimit greater than zero.
+Hint: keep (avatarSize.CollisionDistance / visibilityLimit) less than 10,000 to avoid aliasing artifacts (i.e. polygon 'tearing').
+Interchange profile hint: this field may be ignored.</td>
         </tr>
         
         <tr>
@@ -918,7 +934,8 @@
                 
             </td>
 
-            <td>Factor for damping the walk animationInterchange profile hint: this field may be ignored.</td>
+            <td>Factor for damping the walk animation
+Interchange profile hint: this field may be ignored.</td>
         </tr>
         
         </table>
@@ -942,7 +959,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:02 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

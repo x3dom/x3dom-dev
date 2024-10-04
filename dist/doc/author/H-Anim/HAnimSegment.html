@@ -153,7 +153,8 @@
             </h2>
 
         
-        <div class="class-description">Each body segment is stored in an HAnimSegment node.The HAnimSegment node is a grouping node that will typically contain either a number of Shape nodes or perhaps Transform nodes that position the body part within its coordinate system.</div>
+        <div class="class-description">Each body segment is stored in an HAnimSegment node.
+The HAnimSegment node is a grouping node that will typically contain either a number of Shape nodes or perhaps Transform nodes that position the body part within its coordinate system.</div>
         
     </header>
 
@@ -517,7 +518,10 @@
                 
             </td>
 
-            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines acoordinate space for its children. This coordinate space is relative to the coordinate space of the nodeof which the group node is a child. Such a node is called a parent node. This means that transformationsaccumulate down the scene graph hierarchy.</td>
+            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines a
+coordinate space for its children. This coordinate space is relative to the coordinate space of the node
+of which the group node is a child. Such a node is called a parent node. This means that transformations
+accumulate down the scene graph hierarchy.</td>
         </tr>
         
         <tr>
@@ -547,7 +551,9 @@
                 
             </td>
 
-            <td>The coord field is used for Segment objects that have deformable meshes and shall contain coordinates referencedfrom the indexed mesh for the Segment object. The coordinates are given the same name as the Segment object,but with a "_coords" appended (e.g., "skull_coords").</td>
+            <td>The coord field is used for Segment objects that have deformable meshes and shall contain coordinates referenced
+from the indexed mesh for the Segment object. The coordinates are given the same name as the Segment object,
+but with a "_coords" appended (e.g., "skull_coords").</td>
         </tr>
         
         <tr>
@@ -669,7 +675,8 @@
                 
             </td>
 
-            <td>The momentsOfInertia field contains the moment of inertia matrix. The first three elements are the first rowof the 3×3 matrix, the next three elements are the second row, and the final three elements are the third row.</td>
+            <td>The momentsOfInertia field contains the moment of inertia matrix. The first three elements are the first row
+of the 3×3 matrix, the next three elements are the second row, and the final three elements are the third row.</td>
         </tr>
         
         <tr>
@@ -699,7 +706,10 @@
                 
             </td>
 
-            <td>Each Segment object shall have a name field, which shall not have the empty string value, that is used for identifyingthe object. Within the local scope of a Humanoid object, each Segment object can be referenced by its name alone(e.g., r_upperarm, l_thigh, or skull). However, when referring to a Segment object within a larger or global scope,the name of the Humanoid object shall be added as a distinguishing prefix.</td>
+            <td>Each Segment object shall have a name field, which shall not have the empty string value, that is used for identifying
+the object. Within the local scope of a Humanoid object, each Segment object can be referenced by its name alone
+(e.g., r_upperarm, l_thigh, or skull). However, when referring to a Segment object within a larger or global scope,
+the name of the Humanoid object shall be added as a distinguishing prefix.</td>
         </tr>
         
         <tr>
@@ -787,7 +797,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:02 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

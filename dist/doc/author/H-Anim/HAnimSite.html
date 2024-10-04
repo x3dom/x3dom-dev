@@ -153,7 +153,9 @@
             </h2>
 
         
-        <div class="class-description">An HAnimSite node serves three purposes. The first is to define an "end effecter" location that can be used by an inverse kinematics system.The second is to define an attachment point for accessories such as jewelry and clothing.The third is to define a location for a virtual camera in the reference frame of an HAnimSegment (such as a view "through the eyes" of the humanoid for use in multi-user worlds).</div>
+        <div class="class-description">An HAnimSite node serves three purposes. The first is to define an "end effecter" location that can be used by an inverse kinematics system.
+The second is to define an attachment point for accessories such as jewelry and clothing.
+The third is to define a location for a virtual camera in the reference frame of an HAnimSegment (such as a view "through the eyes" of the humanoid for use in multi-user worlds).</div>
         
     </header>
 
@@ -527,7 +529,10 @@
                 
             </td>
 
-            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines acoordinate space for its children. This coordinate space is relative to the coordinate space of the nodeof which the group node is a child. Such a node is called a parent node. This means that transformationsaccumulate down the scene graph hierarchy.</td>
+            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines a
+coordinate space for its children. This coordinate space is relative to the coordinate space of the node
+of which the group node is a child. Such a node is called a parent node. This means that transformations
+accumulate down the scene graph hierarchy.</td>
         </tr>
         
         <tr>
@@ -589,7 +594,14 @@
                 
             </td>
 
-            <td>Each Site object shall have a name field that is used for identifying the object. Within the local scope of a Humanoidobject, each Site object can be referenced by its name alone (e.g., r_neck_base, l_femoral_lateral_epicn, sellion, etc.).However, when referring to a Site object within a larger or global scope, the name of the Humanoid object shall be addedas a distinguishing prefix.Depending on the intended purpose, the Site object's name field shall be altered to appropriately describe its function.If used as an end effector, the Site object shall have a name consisting of the name of the Segment to which it isattached with an "_tip" suffix appended. Site objects that are used to define viewpoint locations shall have a "_view"suffix appended. Site objects that are not end effectors and not camera locations shall have an "_pt" suffix.</td>
+            <td>Each Site object shall have a name field that is used for identifying the object. Within the local scope of a Humanoid
+object, each Site object can be referenced by its name alone (e.g., r_neck_base, l_femoral_lateral_epicn, sellion, etc.).
+However, when referring to a Site object within a larger or global scope, the name of the Humanoid object shall be added
+as a distinguishing prefix.
+Depending on the intended purpose, the Site object's name field shall be altered to appropriately describe its function.
+If used as an end effector, the Site object shall have a name consisting of the name of the Segment to which it is
+attached with an "_tip" suffix appended. Site objects that are used to define viewpoint locations shall have a "_view"
+suffix appended. Site objects that are not end effectors and not camera locations shall have an "_pt" suffix.</td>
         </tr>
         
         <tr>
@@ -685,7 +697,8 @@
                 
             </td>
 
-            <td>The scale field specifies a non-uniform scale of the coordinate system.Scale values may have any value: positive, negative (indicating a reflection), or zero. A value of zero indicates that any child geometry shall not be displayed.</td>
+            <td>The scale field specifies a non-uniform scale of the coordinate system.
+Scale values may have any value: positive, negative (indicating a reflection), or zero. A value of zero indicates that any child geometry shall not be displayed.</td>
         </tr>
         
         <tr>
@@ -717,7 +730,8 @@
                 
             </td>
 
-            <td>The scaleOrientation specifies a rotation of the coordinate system before the scale (to specify scales in arbitrary orientations).The scaleOrientation applies only to the scale operation.</td>
+            <td>The scaleOrientation specifies a rotation of the coordinate system before the scale (to specify scales in arbitrary orientations).
+The scaleOrientation applies only to the scale operation.</td>
         </tr>
         
         <tr>
@@ -805,7 +819,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:02 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

@@ -153,7 +153,11 @@
             </h2>
 
         
-        <div class="class-description">Each joint in the body is represented by an HAnimJoint node, which is used to define the relationship of each body segment to its immediate parent.An HAnimJoint may only be a child of another HAnimJoint node or a child within the skeleton field in the case of the HAnimJoint used as a humanoid root (i.e., an HAnimJoint may not be a child of an HAnimSegment).The HAnimJoint node is also used to store other joint-specific information. In particular, a joint name is provided so that applications can identify each HAnimJoint node at run-time.The HAnimJoint node may contain hints for inverse-kinematics systems that wish to control the H-Anim figure.These hints include the upper and lower joint limits, the orientation of the joint limits, and a stiffness/resistance value.</div>
+        <div class="class-description">Each joint in the body is represented by an HAnimJoint node, which is used to define the relationship of each body segment to its immediate parent.
+An HAnimJoint may only be a child of another HAnimJoint node or a child within the skeleton field in the case of the HAnimJoint used as a humanoid root (i.e., an HAnimJoint may not be a child of an HAnimSegment).
+The HAnimJoint node is also used to store other joint-specific information. In particular, a joint name is provided so that applications can identify each HAnimJoint node at run-time.
+The HAnimJoint node may contain hints for inverse-kinematics systems that wish to control the H-Anim figure.
+These hints include the upper and lower joint limits, the orientation of the joint limits, and a stiffness/resistance value.</div>
         
     </header>
 
@@ -541,7 +545,10 @@
                 
             </td>
 
-            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines acoordinate space for its children. This coordinate space is relative to the coordinate space of the nodeof which the group node is a child. Such a node is called a parent node. This means that transformationsaccumulate down the scene graph hierarchy.</td>
+            <td>Grouping nodes have a field that contains a list of children nodes. Each grouping node defines a
+coordinate space for its children. This coordinate space is relative to the coordinate space of the node
+of which the group node is a child. Such a node is called a parent node. This means that transformations
+accumulate down the scene graph hierarchy.</td>
         </tr>
         
         <tr>
@@ -571,7 +578,8 @@
                 
             </td>
 
-            <td>The displacers field contains a list of Displacer objects that are used to morph the deformable mesh usingthe morph targets defined in the Displacer objects.</td>
+            <td>The displacers field contains a list of Displacer objects that are used to morph the deformable mesh using
+the morph targets defined in the Displacer objects.</td>
         </tr>
         
         <tr>
@@ -601,7 +609,9 @@
                 
             </td>
 
-            <td>The limitOrientation field gives the orientation of the coordinate frame in which the ulimit and llimit valuesare to be interpreted. It describes the orientation of ulimit and llimit fields in the local coordinate frame,relative to the Joint object centre position described by the center field.</td>
+            <td>The limitOrientation field gives the orientation of the coordinate frame in which the ulimit and llimit values
+are to be interpreted. It describes the orientation of ulimit and llimit fields in the local coordinate frame,
+relative to the Joint object centre position described by the center field.</td>
         </tr>
         
         <tr>
@@ -631,7 +641,10 @@
                 
             </td>
 
-            <td>The llimit field specifies lower joint rotation limits. Its components storee the lower (i.e., minimum) valuesfor rotation around the X, Y and Z axes. A sequence containing zero elements indicates that the joint is unconstrained.A non-empty sequence can only consist of a single three-value element. If ulimit and llimit values are provided,both must be defined together. If llimit and ulimit are equal, no constraints are applied to Joint object rotations.</td>
+            <td>The llimit field specifies lower joint rotation limits. Its components storee the lower (i.e., minimum) values
+for rotation around the X, Y and Z axes. A sequence containing zero elements indicates that the joint is unconstrained.
+A non-empty sequence can only consist of a single three-value element. If ulimit and llimit values are provided,
+both must be defined together. If llimit and ulimit are equal, no constraints are applied to Joint object rotations.</td>
         </tr>
         
         <tr>
@@ -693,7 +706,10 @@
                 
             </td>
 
-            <td>Each Joint object shall have a name field, which shall not have the empty string value, that is used for identifyingthe object. Within the local scope of a Humanoid object, each Joint object can be referenced by its name alone(e.g., r_shoulder, l_hip, or skullbase). However, when referring to a Joint object within a larger or global scope,the name of the Humanoid object shall be added as a distinguishing prefix.</td>
+            <td>Each Joint object shall have a name field, which shall not have the empty string value, that is used for identifying
+the object. Within the local scope of a Humanoid object, each Joint object can be referenced by its name alone
+(e.g., r_shoulder, l_hip, or skullbase). However, when referring to a Joint object within a larger or global scope,
+the name of the Humanoid object shall be added as a distinguishing prefix.</td>
         </tr>
         
         <tr>
@@ -789,7 +805,8 @@
                 
             </td>
 
-            <td>The scale field specifies a non-uniform scale of the coordinate system.Scale values may have any value: positive, negative (indicating a reflection), or zero. A value of zero indicates that any child geometry shall not be displayed.</td>
+            <td>The scale field specifies a non-uniform scale of the coordinate system.
+Scale values may have any value: positive, negative (indicating a reflection), or zero. A value of zero indicates that any child geometry shall not be displayed.</td>
         </tr>
         
         <tr>
@@ -821,7 +838,8 @@
                 
             </td>
 
-            <td>The scaleOrientation specifies a rotation of the coordinate system before the scale (to specify scales in arbitrary orientations).The scaleOrientation applies only to the scale operation.</td>
+            <td>The scaleOrientation specifies a rotation of the coordinate system before the scale (to specify scales in arbitrary orientations).
+The scaleOrientation applies only to the scale operation.</td>
         </tr>
         
         <tr>
@@ -881,7 +899,10 @@
                 
             </td>
 
-            <td>The skinCoordWeight field contains a list of floating point values between 0.0 and 1.0 that describe an amountof weighting that should be used to affect a particular vertex from the skinCoord field of the Humanoid object.Each item in this list has a corresponding index value in the skinCoordIndex field of the Joint object indicatingexactly which coordinate is to be influenced.</td>
+            <td>The skinCoordWeight field contains a list of floating point values between 0.0 and 1.0 that describe an amount
+of weighting that should be used to affect a particular vertex from the skinCoord field of the Humanoid object.
+Each item in this list has a corresponding index value in the skinCoordIndex field of the Joint object indicating
+exactly which coordinate is to be influenced.</td>
         </tr>
         
         <tr>
@@ -911,7 +932,11 @@
                 
             </td>
 
-            <td>The stiffness field, if present, contains values that specify to an inverse kinematics (IK) system how much each degreeof freedom should scale the calculated joint rotation at each step of the IK solver. A scale factor of (1 - stiffness)is applied around the corresponding axis (X, Y, or Z for entries 0, 1 and 2 of the stiffness field). Thus a stiffnessvalue of zero means that no rotation scaling occurs, while a stiffness value of one means that no rotation occursregardless of any provided rotation.</td>
+            <td>The stiffness field, if present, contains values that specify to an inverse kinematics (IK) system how much each degree
+of freedom should scale the calculated joint rotation at each step of the IK solver. A scale factor of (1 - stiffness)
+is applied around the corresponding axis (X, Y, or Z for entries 0, 1 and 2 of the stiffness field). Thus a stiffness
+value of zero means that no rotation scaling occurs, while a stiffness value of one means that no rotation occurs
+regardless of any provided rotation.</td>
         </tr>
         
         <tr>
@@ -973,7 +998,10 @@
                 
             </td>
 
-            <td>The ulimit field specifies the upper joint rotation limits. Its components store the upper (i.e. maximum) values for rotationaround the X, Y and Z axes. A sequence containing zero elements indicates that the joint is unconstrained. A non-emptysequence can only consist of a single three-value element. If ulimit and llimit values are provided, both must be definedtogether. If llimit and ulimit are equal, no constraints are applied to Joint object rotations.</td>
+            <td>The ulimit field specifies the upper joint rotation limits. Its components store the upper (i.e. maximum) values for rotation
+around the X, Y and Z axes. A sequence containing zero elements indicates that the joint is unconstrained. A non-empty
+sequence can only consist of a single three-value element. If ulimit and llimit values are provided, both must be defined
+together. If llimit and ulimit are equal, no constraints are applied to Joint object rotations.</td>
         </tr>
         
         <tr>
@@ -1029,7 +1057,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:02 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

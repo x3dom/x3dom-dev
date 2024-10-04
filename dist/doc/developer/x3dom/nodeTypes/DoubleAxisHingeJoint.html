@@ -154,7 +154,10 @@
             </h2>
 
         
-        <div class="class-description">The DoubleAxisHingeJoint node represents a joint that has two independent axes that are located around a common anchor point. Axis 1 is specified relative to the first body (specified by the body1 field) and axis 2 is specified relative to the second body (specified by the body2 field). Axis 1 can have limits and a motor, axis 2 can only have a motor.</div>
+        <div class="class-description">The DoubleAxisHingeJoint node represents a joint that has two independent axes that are located
+ around a common anchor point. Axis 1 is specified relative to the first body (specified by the body1 field)
+ and axis 2 is specified relative to the second body (specified by the body2 field). Axis 1 can have limits
+ and a motor, axis 2 can only have a motor.</div>
         
     </header>
 
@@ -636,7 +639,12 @@
                 
             </td>
 
-            <td>The forceOutput field is used to control which output fields are to be generated for the next frame. In physics models, the amount of data that can be generated per frame can be quite extensive, particularly in complex models with a large number of joints. A typical application will need only a few of them, if any at all. This field is used to control which of those outputs the author requires to be generated. The values of the array are to describe the names, exactly, of the output field(s) that are to be updated at the start of the next frame. Two special values are defined: "ALL" and "NONE".</td>
+            <td>The forceOutput field is used to control which output fields are to be generated for the next frame. In
+ physics models, the amount of data that can be generated per frame can be quite extensive, particularly
+ in complex models with a large number of joints. A typical application will need only a few of them, if
+ any at all. This field is used to control which of those outputs the author requires to be generated.
+ The values of the array are to describe the names, exactly, of the output field(s) that are to be
+ updated at the start of the next frame. Two special values are defined: "ALL" and "NONE".</td>
         </tr>
         
         <tr>
@@ -666,7 +674,9 @@
                 
             </td>
 
-            <td>The minAngle1 and maxAngle1 fields are used to control the maximum angles through which the hinge is allowed to travel. A hinge may not travel more than π radians (or the equivalent angle base units) in either direction from its initial position.</td>
+            <td>The minAngle1 and maxAngle1 fields are used to control the maximum angles through which the hinge is
+ allowed to travel. A hinge may not travel more than π radians (or the equivalent angle base units) in
+ either direction from its initial position.</td>
         </tr>
         
         <tr>
@@ -696,7 +706,8 @@
                 
             </td>
 
-            <td>The maxTorque1 field defines the maximum amount of torque that the motor can apply on axis 1 in order to achieve the desired desiredAngularVelocity1 value.</td>
+            <td>The maxTorque1 field defines the maximum amount of torque that the motor can apply on axis 1 in order to
+ achieve the desired desiredAngularVelocity1 value.</td>
         </tr>
         
         <tr>
@@ -726,7 +737,8 @@
                 
             </td>
 
-            <td>The maxTorque2 field defines the maximum amount of torque that the motor can apply on axis 1 in order to achieve the desired desiredAngularVelocity2 value.</td>
+            <td>The maxTorque2 field defines the maximum amount of torque that the motor can apply on axis 1 in order to
+ achieve the desired desiredAngularVelocity2 value.</td>
         </tr>
         
         <tr>
@@ -788,7 +800,9 @@
                 
             </td>
 
-            <td>The minAngle1 and maxAngle1 fields are used to control the maximum angles through which the hinge is allowed to travel. A hinge may not travel more than π radians (or the equivalent angle base units) in either direction from its initial position.</td>
+            <td>The minAngle1 and maxAngle1 fields are used to control the maximum angles through which the hinge is
+ allowed to travel. A hinge may not travel more than π radians (or the equivalent angle base units) in
+ either direction from its initial position.</td>
         </tr>
         
         <tr>
@@ -818,7 +832,9 @@
                 
             </td>
 
-            <td>The stopBounce1 field is used to set how bouncy the minimum and maximum angle stops are for axis 1. A value of zero means they are not bouncy while a value of 1 means maximum bounciness (full reflection of force arriving at the stop).</td>
+            <td>The stopBounce1 field is used to set how bouncy the minimum and maximum angle stops are for axis 1. A
+ value of zero means they are not bouncy while a value of 1 means maximum bounciness (full reflection of
+ force arriving at the stop).</td>
         </tr>
         
         <tr>
@@ -848,7 +864,8 @@
                 
             </td>
 
-            <td>The stopConstantForceMix1 and suspensionForce fields can be used to apply damping to the calculations by violating the normal constraints by applying a small, constant force to those calculations.</td>
+            <td>The stopConstantForceMix1 and suspensionForce fields can be used to apply damping to the calculations by
+ violating the normal constraints by applying a small, constant force to those calculations.</td>
         </tr>
         
         <tr>
@@ -878,7 +895,8 @@
                 
             </td>
 
-            <td>The stopErrorCorrection1 and suspensionErrorCorrection fields describe how quickly the system should resolve intersection errors due to floating point inaccuracies.</td>
+            <td>The stopErrorCorrection1 and suspensionErrorCorrection fields describe how quickly the system should
+ resolve intersection errors due to floating point inaccuracies.</td>
         </tr>
         
         <tr>
@@ -908,7 +926,8 @@
                 
             </td>
 
-            <td>The stopErrorCorrection1 and suspensionErrorCorrection fields describe how quickly the system should resolve intersection errors due to floating point inaccuracies.</td>
+            <td>The stopErrorCorrection1 and suspensionErrorCorrection fields describe how quickly the system should
+ resolve intersection errors due to floating point inaccuracies.</td>
         </tr>
         
         <tr>
@@ -938,7 +957,8 @@
                 
             </td>
 
-            <td>The stopConstantForceMix1 and suspensionForce fields can be used to apply damping to the calculations by violating the normal constraints by applying a small, constant force to those calculations.</td>
+            <td>The stopConstantForceMix1 and suspensionForce fields can be used to apply damping to the calculations by
+ violating the normal constraints by applying a small, constant force to those calculations.</td>
         </tr>
         
         </table>
@@ -962,7 +982,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:31 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:01 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

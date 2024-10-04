@@ -154,7 +154,13 @@
             </h2>
 
         
-        <div class="class-description">The CollisionCollection node holds a collection of objects in the collidables field that can be managed as a single entity for resolution of inter-object collisions with other groups of collidable objects. A group consists of both collidable objects as well as spaces that may be collided against each other. A set of parameters are provided that specify default values that will be assigned to all Contact nodes generated from the CollisionSensor node. A user may then override the individual Contact node by inserting a script between the output of the sensor and the input to the RigidBodyCollection node if it is desired to process the contact stream.</div>
+        <div class="class-description">The CollisionCollection node holds a collection of objects in the collidables field that can be
+ managed as a single entity for resolution of inter-object collisions with other groups of collidable
+ objects. A group consists of both collidable objects as well as spaces that may be collided against each
+ other. A set of parameters are provided that specify default values that will be assigned to all Contact
+ nodes generated from the CollisionSensor node. A user may then override the individual Contact node by
+ inserting a script between the output of the sensor and the input to the RigidBodyCollection node if it is
+ desired to process the contact stream.</div>
         
     </header>
 
@@ -404,7 +410,8 @@
                 
             </td>
 
-            <td>The bounce field indicates how bouncy the surface contact is. A value of 0 indicates no bounce at all while a value of 1 indicates maximum bounce.</td>
+            <td>The bounce field indicates how bouncy the surface contact is. A value of 0 indicates no bounce at all
+ while a value of 1 indicates maximum bounce.</td>
         </tr>
         
         <tr>
@@ -434,7 +441,8 @@
                 
             </td>
 
-            <td>The collidables field can be managed as a single entity for resolution of inter-object collisions with other groups of collidable objects.</td>
+            <td>The collidables field can be managed as a single entity for resolution of inter-object collisions with
+ other groups of collidable objects.</td>
         </tr>
         
         <tr>
@@ -464,7 +472,10 @@
                 
             </td>
 
-            <td>The enabled field is used to control whether the collision detection system for this collection should be run at the end of this frame. A value of TRUE enables it while a value of FALSE disables it. A CollisionSensor node watching this collection does not report any outputs for this collection for this frame if it is not enabled.</td>
+            <td>The enabled field is used to control whether the collision detection system for this collection should be
+ run at the end of this frame. A value of TRUE enables it while a value of FALSE disables it. A
+ CollisionSensor node watching this collection does not report any outputs for this collection for this
+ frame if it is not enabled.</td>
         </tr>
         
         <tr>
@@ -556,7 +567,9 @@
                 
             </td>
 
-            <td>The minBounceSpeed field indicates the minimum speed, in speed base units, that an object shall have before an object will bounce. If the object is below this speed, it will not bounce, effectively having an equivalent value for the bounce field of zero.</td>
+            <td>The minBounceSpeed field indicates the minimum speed, in speed base units, that an object shall have
+ before an object will bounce. If the object is below this speed, it will not bounce, effectively having
+ an equivalent value for the bounce field of zero.</td>
         </tr>
         
         <tr>
@@ -616,7 +629,8 @@
                 
             </td>
 
-            <td>The softnessConstantForceMix value applies a constant force value to make the colliding surfaces appear to be somewhat soft.</td>
+            <td>The softnessConstantForceMix value applies a constant force value to make the colliding surfaces appear
+ to be somewhat soft.</td>
         </tr>
         
         <tr>
@@ -646,7 +660,9 @@
                 
             </td>
 
-            <td>The softnessErrorCorrection determines how much of the collision error should be fixed in a set of evaluations. The value is limited to the range of [0,1]. A value of 0 specifies no error correction while a value of 1 specifies that all errors should be corrected in a single step.</td>
+            <td>The softnessErrorCorrection determines how much of the collision error should be fixed in a set of
+ evaluations. The value is limited to the range of [0,1]. A value of 0 specifies no error correction
+ while a value of 1 specifies that all errors should be corrected in a single step.</td>
         </tr>
         
         <tr>
@@ -676,7 +692,8 @@
                 
             </td>
 
-            <td>The surfaceSpeed field defines the speed in the two friction directions in speed base units. This is used to indicate if the contact surface is moving independently of the motion of the bodies.</td>
+            <td>The surfaceSpeed field defines the speed in the two friction directions in speed base units. This is used
+ to indicate if the contact surface is moving independently of the motion of the bodies.</td>
         </tr>
         
         </table>
@@ -700,7 +717,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:31 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:01 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

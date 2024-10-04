@@ -153,7 +153,8 @@
             </h2>
 
         
-        <div class="class-description">The GeoViewpoint node allows the specification of a viewpoint in terms of a geospatial coordinate.This node can be used wherever a Viewpoint node can be used and can be combined with Viewpoint nodes in the same scene.</div>
+        <div class="class-description">The GeoViewpoint node allows the specification of a viewpoint in terms of a geospatial coordinate.
+This node can be used wherever a Viewpoint node can be used and can be combined with Viewpoint nodes in the same scene.</div>
         
     </header>
 
@@ -369,7 +370,8 @@
                 
             </td>
 
-            <td>Event sent reporting timestamp when node becomes active/inactive.Only appears in messages</td>
+            <td>Event sent reporting timestamp when node becomes active/inactive.
+Only appears in messages</td>
         </tr>
         
         <tr>
@@ -399,7 +401,8 @@
                 
             </td>
 
-            <td>The centerOfRotation field specifies a center about which to rotate the user's eyepoint when in EXAMINE mode.The coordinates are provided in the coordinate system specified by geoSystem.</td>
+            <td>The centerOfRotation field specifies a center about which to rotate the user's eyepoint when in EXAMINE mode.
+The coordinates are provided in the coordinate system specified by geoSystem.</td>
         </tr>
         
         <tr>
@@ -461,7 +464,8 @@
                 
             </td>
 
-            <td>Enable/disable elevation scaled speed for automatic adjustment of user movement as recommended in spec.Custom field to allow disabling for performance</td>
+            <td>Enable/disable elevation scaled speed for automatic adjustment of user movement as recommended in spec.
+Custom field to allow disabling for performance</td>
         </tr>
         
         <tr>
@@ -523,7 +527,11 @@
                 
             </td>
 
-            <td>Preferred minimum viewing angle from this viewpoint in radians.Small field of view roughly corresponds to a telephoto lens, large field of view roughly corresponds to a wide-angle lens.Hint: modifying Viewpoint distance to object may be better for zooming.Warning: fieldOfView may not be correct for different window sizes and aspect ratios.Interchange profile hint: this field may be ignored.</td>
+            <td>Preferred minimum viewing angle from this viewpoint in radians.
+Small field of view roughly corresponds to a telephoto lens, large field of view roughly corresponds to a wide-angle lens.
+Hint: modifying Viewpoint distance to object may be better for zooming.
+Warning: fieldOfView may not be correct for different window sizes and aspect ratios.
+Interchange profile hint: this field may be ignored.</td>
         </tr>
         
         <tr>
@@ -613,7 +621,9 @@
                 
             </td>
 
-            <td>Enable/disable directional light that always points in the direction the user is looking.Removed in X3D V3.3. See NavigationInfostill supported but required changing default to undefined since could be already given by NavigationInfo</td>
+            <td>Enable/disable directional light that always points in the direction the user is looking.
+Removed in X3D V3.3. See NavigationInfo
+still supported but required changing default to undefined since could be already given by NavigationInfo</td>
         </tr>
         
         <tr>
@@ -677,7 +687,9 @@
                 
             </td>
 
-            <td>Output event true gets sent when node becomes bound and activated,otherwise output event false gets sent when node becomes unbound and deactivated.Only appears in messages</td>
+            <td>Output event true gets sent when node becomes bound and activated,
+otherwise output event false gets sent when node becomes unbound and deactivated.
+Only appears in messages</td>
         </tr>
         
         <tr>
@@ -741,7 +753,9 @@
                 
             </td>
 
-            <td>Defines a dedicated NavigationInfo node for this X3DViewpointNode. The specified NavigationInfo node receivesa set_bind TRUE event at the time when the parent node is bound and receives a set_bind FALSE at the timewhen the parent node is unbound.</td>
+            <td>Defines a dedicated NavigationInfo node for this X3DViewpointNode. The specified NavigationInfo node receives
+a set_bind TRUE event at the time when the parent node is bound and receives a set_bind FALSE at the time
+when the parent node is unbound.</td>
         </tr>
         
         <tr>
@@ -771,7 +785,9 @@
                 
             </td>
 
-            <td>Specifies the navigation type.Removed in X3D V3.3. See NavigationInfostill supported but required changing default to undefined since could be already given by NavigationInfo</td>
+            <td>Specifies the navigation type.
+Removed in X3D V3.3. See NavigationInfo
+still supported but required changing default to undefined since could be already given by NavigationInfo</td>
         </tr>
         
         <tr>
@@ -863,7 +879,8 @@
                 
             </td>
 
-            <td>The position fields of the Viewpoint node specifies a relative location in the local coordinate system.The coordinates are provided in the coordinate system specified by geoSystem.</td>
+            <td>The position fields of the Viewpoint node specifies a relative location in the local coordinate system.
+The coordinates are provided in the coordinate system specified by geoSystem.</td>
         </tr>
         
         <tr>
@@ -925,7 +942,11 @@
                 
             </td>
 
-            <td>When the viewAll field is set to TRUE or a viewpoint is bound with viewAll field TRUE,the current view is modified to change the centerOfRotation field to match center of the bounding box for the entire visible scene,and the orientation field is modified to aim at that point. Finally, the zoom position or fieldofview is adjusted to containthe entire scene in the current viewing window. If needed, the near and far clipping planes shall be adjusted to allow viewingthe entire scene. When the value of the viewAll field is changed from TRUE to FALSE, no change in the current view occurs.</td>
+            <td>When the viewAll field is set to TRUE or a viewpoint is bound with viewAll field TRUE,
+the current view is modified to change the centerOfRotation field to match center of the bounding box for the entire visible scene,
+and the orientation field is modified to aim at that point. Finally, the zoom position or fieldofview is adjusted to contain
+the entire scene in the current viewing window. If needed, the near and far clipping planes shall be adjusted to allow viewing
+the entire scene. When the value of the viewAll field is changed from TRUE to FALSE, no change in the current view occurs.</td>
         </tr>
         
         </table>
@@ -949,7 +970,7 @@
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Wed Oct 02 2024 22:27:32 GMT+0200 (Mitteleuropäische Sommerzeit)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 04 2024 09:33:02 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 
