@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7510
- * Revision: e54cb9d9518c8e8f7176d32a501389d83f7cc4aa
- * Date: Wed Dec 11 01:03:17 2024 -0500
+ * Build : 7511
+ * Revision: 108e496d87ce80472a7aedc48ef9a44b922e1c47
+ * Date: Wed Dec 11 01:03:53 2024 -0500
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7510",
-    revision : "e54cb9d9518c8e8f7176d32a501389d83f7cc4aa",
-    date     : "Wed Dec 11 01:03:17 2024 -0500"
+    build    : "7511",
+    revision : "108e496d87ce80472a7aedc48ef9a44b922e1c47",
+    date     : "Wed Dec 11 01:03:53 2024 -0500"
 };
 
 /**
@@ -35369,11 +35369,12 @@ x3dom.ProtoDeclaration.prototype.registerNode = function ()
 
                 _normalizeName : function ( name, node )
                 {
-                    if ( name in node._vf )
+                    var stripped = name.replace( /^set_/, "" ).replace( /_changed$/, "" );
+                    if ( stripped in node._vf )
                     {
-                        return name;
+                        return stripped;
                     }
-                    return name.replace( /^set_/, "" ).replace( /_changed$/, "" );
+                    return name;
                 },
 
                 _setupFieldWatchers : function ( field )
