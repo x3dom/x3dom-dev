@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7511
- * Revision: 108e496d87ce80472a7aedc48ef9a44b922e1c47
- * Date: Wed Dec 11 01:03:53 2024 -0500
+ * Build : 7512
+ * Revision: 47c214e56e2ff2c9d9bb4fb54368e7e5ddbc5d07
+ * Date: Mon Mar 17 23:41:22 2025 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7511",
-    revision : "108e496d87ce80472a7aedc48ef9a44b922e1c47",
-    date     : "Wed Dec 11 01:03:53 2024 -0500"
+    build    : "7512",
+    revision : "47c214e56e2ff2c9d9bb4fb54368e7e5ddbc5d07",
+    date     : "Mon Mar 17 23:41:22 2025 -0400"
 };
 
 /**
@@ -35031,7 +35031,7 @@ x3dom.protoExpander = new x3dom.PROTOS();
  * X3DOM JavaScript Library
  * http://www.x3dom.org
  *
- * (C)2020 Andreas Plesch, Waltham, MA
+ * (C)2025 Andreas Plesch, Waltham, MA
  * Dual licensed under the MIT and GPL
  *
  * Based on code originally provided by
@@ -35104,7 +35104,7 @@ x3dom.ProtoDeclaration.prototype.registerNode = function ()
                                 ctx.xmlNode.setAttribute( field.name, field.value );
                             }
                         }
-                        this[ "addField_" + field.dataType ]( ctx, field.name, field.value );
+                        this[ "addField_" + field.dataType ]( ctx, field.name, field.value == null ? undefined : field.value );
                     }
                     else // _cf fields
                     {
@@ -40424,16 +40424,16 @@ x3dom.registerNodeType(
             },
 
             // single fields
-            addField_SFInt32 : function ( ctx, name, n )
+            addField_SFInt32 : function ( ctx, name, n = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
-                    parseInt( ctx.xmlNode.getAttribute( name ), 10 ) : n;
+                    parseInt( ctx.xmlNode.getAttribute( name ), 10 ) : 1 * n;
 
                 if ( ctx && ctx.xmlNode ) { this.initSetter( ctx.xmlNode, name ); }
                 this._vfFieldTypes[ name ] = "SFInt32";
             },
 
-            addField_SFFloat : function ( ctx, name, n )
+            addField_SFFloat : function ( ctx, name, n = 0.0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     +ctx.xmlNode.getAttribute( name ) : n;
@@ -40442,7 +40442,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFFloat";
             },
 
-            addField_SFDouble : function ( ctx, name, n )
+            addField_SFDouble : function ( ctx, name, n = 0.0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     +ctx.xmlNode.getAttribute( name ) : n;
@@ -40451,7 +40451,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFDouble";
             },
 
-            addField_SFTime : function ( ctx, name, n )
+            addField_SFTime : function ( ctx, name, n = -1 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     +ctx.xmlNode.getAttribute( name ) : n;
@@ -40460,16 +40460,16 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFTime";
             },
 
-            addField_SFBool : function ( ctx, name, n )
+            addField_SFBool : function ( ctx, name, n = false )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
-                    ctx.xmlNode.getAttribute( name ).toLowerCase() === "true" : n;
+                    ctx.xmlNode.getAttribute( name ).toLowerCase() === "true" : !!n ;
 
                 if ( ctx && ctx.xmlNode ) { this.initSetter( ctx.xmlNode, name ); }
                 this._vfFieldTypes[ name ] = "SFBool";
             },
 
-            addField_SFString : function ( ctx, name, n )
+            addField_SFString : function ( ctx, name, n = "" )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     ctx.xmlNode.getAttribute( name ) : n;
@@ -40478,7 +40478,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFString";
             },
 
-            addField_SFColor : function ( ctx, name, r, g, b )
+            addField_SFColor : function ( ctx, name, r = 0, g = 0, b = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFColor.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40488,7 +40488,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFColor";
             },
 
-            addField_SFColorRGBA : function ( ctx, name, r, g, b, a )
+            addField_SFColorRGBA : function ( ctx, name, r = 0, g = 0, b = 0, a = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFColorRGBA.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40498,7 +40498,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFColorRGBA";
             },
 
-            addField_SFVec2f : function ( ctx, name, x, y )
+            addField_SFVec2f : function ( ctx, name, x = 0, y = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFVec2f.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40508,7 +40508,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFVec2f";
             },
 
-            addField_SFVec3f : function ( ctx, name, x, y, z )
+            addField_SFVec3f : function ( ctx, name, x = 0, y = 0, z = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFVec3f.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40518,7 +40518,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFVec3f";
             },
 
-            addField_SFVec4f : function ( ctx, name, x, y, z, w )
+            addField_SFVec4f : function ( ctx, name, x = 0, y = 0, z = 0, w = 1 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFVec4f.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40528,13 +40528,13 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "SFVec4f";
             },
 
-            addField_SFVec3d : function ( ctx, name, x, y, z )
+            addField_SFVec3d : function ( ctx, name, x = 0, y = 0, z = 0 )
             {
                 this.addField_SFVec3f( ctx, name, x, y, z );
                 this._vfFieldTypes[ name ] = "SFVec3d";
             },
 
-            addField_SFRotation : function ( ctx, name, x, y, z, a )
+            addField_SFRotation : function ( ctx, name, x = 0, y = 0, z = 1, a = 0 )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.Quaternion.parseAxisAngle( ctx.xmlNode.getAttribute( name ) ) :
@@ -40551,27 +40551,27 @@ x3dom.registerNodeType(
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFMatrix4f.parse( ctx.xmlNode.getAttribute( name ) ) :
-                    new x3dom.fields.SFMatrix4f( _00, _01, _02, _03,
+                    ( _33 != undefined ? new x3dom.fields.SFMatrix4f( _00, _01, _02, _03,
                         _10, _11, _12, _13,
                         _20, _21, _22, _23,
-                        _30, _31, _32, _33 );
+                        _30, _31, _32, _33 ) : new x3dom.fields.SFMatrix4f() );
 
                 if ( ctx && ctx.xmlNode ) { this.initSetter( ctx.xmlNode, name ); }
                 this._vfFieldTypes[ name ] = "SFMatrix4f";
             },
 
-            addField_SFImage : function ( ctx, name, def )
+            addField_SFImage : function ( ctx, name, w = 0, h = 0, c = 0, arr = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.SFImage.parse( ctx.xmlNode.getAttribute( name ) ) :
-                    new x3dom.fields.SFImage( def );
+                    new x3dom.fields.SFImage( w, h, c, arr );
 
                 if ( ctx && ctx.xmlNode ) { this.initSetter( ctx.xmlNode, name ); }
                 this._vfFieldTypes[ name ] = "SFImage";
             },
 
             // multi fields
-            addField_MFString : function ( ctx, name, def )
+            addField_MFString : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFString.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40581,7 +40581,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFString";
             },
 
-            addField_MFBoolean : function ( ctx, name, def )
+            addField_MFBoolean : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFBoolean.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40591,7 +40591,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFBoolean";
             },
 
-            addField_MFInt32 : function ( ctx, name, def )
+            addField_MFInt32 : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFInt32.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40601,7 +40601,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFInt32";
             },
 
-            addField_MFFloat : function ( ctx, name, def )
+            addField_MFFloat : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFFloat.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40611,7 +40611,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFFloat";
             },
 
-            addField_MFDouble : function ( ctx, name, def )
+            addField_MFDouble : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFFloat.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40621,7 +40621,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFDouble";
             },
 
-            addField_MFColor : function ( ctx, name, def )
+            addField_MFColor : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFColor.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40631,7 +40631,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFColor";
             },
 
-            addField_MFColorRGBA : function ( ctx, name, def )
+            addField_MFColorRGBA : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFColorRGBA.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40641,7 +40641,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFColorRGBA";
             },
 
-            addField_MFVec2f : function ( ctx, name, def )
+            addField_MFVec2f : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFVec2f.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40651,7 +40651,7 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFVec2f";
             },
 
-            addField_MFVec3f : function ( ctx, name, def )
+            addField_MFVec3f : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFVec3f.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -40661,13 +40661,13 @@ x3dom.registerNodeType(
                 this._vfFieldTypes[ name ] = "MFVec3f";
             },
 
-            addField_MFVec3d : function ( ctx, name, def )
+            addField_MFVec3d : function ( ctx, name, def = [] )
             {
                 this.addField_MFVec3f( ctx, name, def );
                 this._vfFieldTypes[ name ] = "MFVec3d";
             },
 
-            addField_MFRotation : function ( ctx, name, def )
+            addField_MFRotation : function ( ctx, name, def = [] )
             {
                 this._vf[ name ] = ctx && ctx.xmlNode && ctx.xmlNode.hasAttribute( name ) ?
                     x3dom.fields.MFRotation.parse( ctx.xmlNode.getAttribute( name ) ) :
@@ -41893,7 +41893,21 @@ x3dom.registerNodeType(
                     clipPlanes = localClipPlanes.concat( clipPlanes );
                 }
 
-                for ( var i = 0; i < n; i++ )
+                //hook for HAnim nodes (and others)
+                this.onBeforeCollectChildNodes( childTransform );
+
+                //HAnimHumanoid overwrites this method
+                this.collectChildNodes( childTransform, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes );
+            },
+
+            onBeforeCollectChildNodes : function ( childTransform )//, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes )
+            {
+                //implemented by derived nodes
+            },
+
+            collectChildNodes : function ( childTransform, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes )
+            {
+                for ( var i = 0; i < this._childNodes.length; i++ )
                 {
                     if ( ( cnode = this._childNodes[ i ] ) )
                     {
