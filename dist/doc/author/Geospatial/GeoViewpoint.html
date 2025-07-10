@@ -193,9 +193,9 @@ This node can be used wherever a Viewpoint node can be used and can be combined 
                 
                 metadata='X3DMetadataObject'
                 
-                navigationInfo='null'
-                
                 navType='undefined'
+                
+                navigationInfo='null'
                 
                 nearClippingPlane='-1'
                 
@@ -725,6 +725,38 @@ Only appears in messages</td>
         </tr>
         
         <tr>
+            <td>navType</td>
+
+            <td>
+               
+
+                MFString
+            </td>
+
+            <td>
+                
+                undefined</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Specifies the navigation type.
+Removed in X3D V3.3. See NavigationInfo
+still supported but required changing default to undefined since could be already given by NavigationInfo</td>
+        </tr>
+        
+        <tr>
             <td>navigationInfo</td>
 
             <td>
@@ -756,38 +788,6 @@ Only appears in messages</td>
             <td>Defines a dedicated NavigationInfo node for this X3DViewpointNode. The specified NavigationInfo node receives
 a set_bind TRUE event at the time when the parent node is bound and receives a set_bind FALSE at the time
 when the parent node is unbound.</td>
-        </tr>
-        
-        <tr>
-            <td>navType</td>
-
-            <td>
-               
-
-                MFString
-            </td>
-
-            <td>
-                
-                undefined</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Specifies the navigation type.
-Removed in X3D V3.3. See NavigationInfo
-still supported but required changing default to undefined since could be already given by NavigationInfo</td>
         </tr>
         
         <tr>
@@ -970,7 +970,7 @@ the entire scene. When the value of the viewAll field is changed from TRUE to FA
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Jul 10 2025 04:37:42 GMT+0000 (Coordinated Universal Time)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a> on Thu Jul 10 2025 04:41:51 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 

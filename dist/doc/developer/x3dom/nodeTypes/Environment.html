@@ -154,6 +154,16 @@
                 &lt;Environment
 
                 
+                SSAO='"false"'
+                
+                SSAOamount='"1.0"'
+                
+                SSAOblurDepthTreshold='"5"'
+                
+                SSAOradius='"4"'
+                
+                SSAOrandomTextureSize='"4"'
+                
                 bind='false'
                 
                 bindTime='null'
@@ -197,16 +207,6 @@
                 smallFeatureThreshold='1.0'
                 
                 sortTrans='true'
-                
-                SSAO='"false"'
-                
-                SSAOamount='"1.0"'
-                
-                SSAOblurDepthTreshold='"5"'
-                
-                SSAOradius='"4"'
-                
-                SSAOrandomTextureSize='"4"'
                 
                 tessellationDetailCulling='false'
                 
@@ -415,6 +415,157 @@
             <th>Description</th>
         </tr>
 
+        
+        <tr>
+            <td>SSAO</td>
+
+            <td>
+               
+
+                SFBool
+            </td>
+
+            <td>
+                
+                "false"</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Flag to enable Screen Space Ambient Occlusion</td>
+        </tr>
+        
+        <tr>
+            <td>SSAOamount</td>
+
+            <td>
+               
+
+                SFFloat
+            </td>
+
+            <td>
+                
+                0"</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Value that determines the amount of contribution of SSAO (from 0 to 1)</td>
+        </tr>
+        
+        <tr>
+            <td>SSAOblurDepthTreshold</td>
+
+            <td>
+               
+
+                SFFloat
+            </td>
+
+            <td>
+                
+                "5"</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Value that determines the maximum depth difference for the SSAO blurring pass.
+Pixels with higher depth difference to the filer kernel center are not incorporated into the average.</td>
+        </tr>
+        
+        <tr>
+            <td>SSAOradius</td>
+
+            <td>
+               
+
+                SFFloat
+            </td>
+
+            <td>
+                
+                "4"</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Value that determines the radius in which the SSAO is sampled in world space</td>
+        </tr>
+        
+        <tr>
+            <td>SSAOrandomTextureSize</td>
+
+            <td>
+               
+
+                SFFloat
+            </td>
+
+            <td>
+                
+                "4"</a>
+                
+            </td>
+			
+            <td></td>
+
+            <td>
+                
+            </td>
+
+            <td>
+                
+                    <img src="../../../static/images/x3dom.png">
+                
+            </td>
+
+            <td>Value that determines the size of the random texture used for sparse sampling of SSAO</td>
+        </tr>
         
         <tr>
             <td>bind</td>
@@ -1093,157 +1244,6 @@ space coverage, are rendered</td>
         </tr>
         
         <tr>
-            <td>SSAO</td>
-
-            <td>
-               
-
-                SFBool
-            </td>
-
-            <td>
-                
-                "false"</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Flag to enable Screen Space Ambient Occlusion</td>
-        </tr>
-        
-        <tr>
-            <td>SSAOamount</td>
-
-            <td>
-               
-
-                SFFloat
-            </td>
-
-            <td>
-                
-                0"</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Value that determines the amount of contribution of SSAO (from 0 to 1)</td>
-        </tr>
-        
-        <tr>
-            <td>SSAOblurDepthTreshold</td>
-
-            <td>
-               
-
-                SFFloat
-            </td>
-
-            <td>
-                
-                "5"</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Value that determines the maximum depth difference for the SSAO blurring pass.
-Pixels with higher depth difference to the filer kernel center are not incorporated into the average.</td>
-        </tr>
-        
-        <tr>
-            <td>SSAOradius</td>
-
-            <td>
-               
-
-                SFFloat
-            </td>
-
-            <td>
-                
-                "4"</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Value that determines the radius in which the SSAO is sampled in world space</td>
-        </tr>
-        
-        <tr>
-            <td>SSAOrandomTextureSize</td>
-
-            <td>
-               
-
-                SFFloat
-            </td>
-
-            <td>
-                
-                "4"</a>
-                
-            </td>
-			
-            <td></td>
-
-            <td>
-                
-            </td>
-
-            <td>
-                
-                    <img src="../../../static/images/x3dom.png">
-                
-            </td>
-
-            <td>Value that determines the size of the random texture used for sparse sampling of SSAO</td>
-        </tr>
-        
-        <tr>
             <td>tessellationDetailCulling</td>
 
             <td>
@@ -1414,7 +1414,7 @@ Pixels with higher depth difference to the filer kernel center are not incorpora
 
 <div class="container">
     <footer>
-        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Jul 10 2025 04:37:41 GMT+0000 (Coordinated Universal Time)
+        This X3DOM documentation was generated with the help of <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a> on Thu Jul 10 2025 04:41:50 GMT+0000 (Coordinated Universal Time)
     </footer>
 </div>
 
