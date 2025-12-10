@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7517
- * Revision: addb8b68579a328e64047aff90b3ff56f91ab6bc
- * Date: Fri Jul 18 22:06:20 2025 -0400
+ * Build : 7518
+ * Revision: 7d63fcbd5e1afd088ed2076785d96b05f425ff4a
+ * Date: Wed Dec 10 16:23:45 2025 -0500
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7517",
-    revision : "addb8b68579a328e64047aff90b3ff56f91ab6bc",
-    date     : "Fri Jul 18 22:06:20 2025 -0400"
+    build    : "7518",
+    revision : "7d63fcbd5e1afd088ed2076785d96b05f425ff4a",
+    date     : "Wed Dec 10 16:23:45 2025 -0500"
 };
 
 /**
@@ -29211,7 +29211,7 @@ x3dom.BinaryContainerLoader.setupBufferInterpolator = function ( interpolator )
         var data = x3dom.BinaryContainerLoader.getArrayBufferFromType( componentType,
             arraybuffer,
             byteOffset,
-            byteLength );
+            byteLength ).slice();
 
         for ( var i = 0, n = data.length; i < n; i++ )
         {
