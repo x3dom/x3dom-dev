@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7519
- * Revision: f17fa8909e7d1536beaef245ab4b926905c5f01c
- * Date: Fri Jan 23 23:01:42 2026 -0500
+ * Build : 7520
+ * Revision: 50be2aedd6d06e298730d9e0cb414262c03c0c2e
+ * Date: Fri Jan 23 23:06:38 2026 -0500
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7519",
-    revision : "f17fa8909e7d1536beaef245ab4b926905c5f01c",
-    date     : "Fri Jan 23 23:01:42 2026 -0500"
+    build    : "7520",
+    revision : "50be2aedd6d06e298730d9e0cb414262c03c0c2e",
+    date     : "Fri Jan 23 23:06:38 2026 -0500"
 };
 
 /**
@@ -21301,6 +21301,8 @@ x3dom.Texture.prototype.updateTexture = function ()
 
         pixels.set( pixelArr );
 
+        //Flip Y axis. (Ref. https://registry.khronos.org/webgl/specs/latest/1.0/#texImage2D and https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/fieldTypes.html#SFImageAndMFImage)
+        gl.pixelStorei( gl.UNPACK_FLIP_Y_WEBGL, true );
         gl.bindTexture( this.type, this.texture );
         gl.pixelStorei( gl.UNPACK_ALIGNMENT, 1 );
         gl.texImage2D( this.type, 0, this.format,
@@ -21311,6 +21313,7 @@ x3dom.Texture.prototype.updateTexture = function ()
             gl.generateMipmap( this.type );
         }
         gl.bindTexture( this.type, null );
+        gl.pixelStorei( gl.UNPACK_FLIP_Y_WEBGL, false );
     }
     else if ( x3dom.isa( tex, x3dom.nodeTypes.MovieTexture ) || childTex )
     {
@@ -26514,7 +26517,6 @@ x3dom.Utils.generateProperties = function ( viewarea, shape )
                                     ( property.PBR_MATERIAL && material.hasTextures() ) ) ? 1 : 0;
         property.CUBEMAP          = ( texture && x3dom.isa( texture, x3dom.nodeTypes.X3DEnvironmentTextureNode ) ) ||
                                     ( property.CSSHADER && appearance._shader.getEnvironmentMap() ) ? 1 : 0;
-        property.PIXELTEX         = ( texture && x3dom.isa( texture, x3dom.nodeTypes.PixelTexture ) ) ? 1 : 0;
         property.TEXTRAFO         = ( appearance && appearance._cf.textureTransform.node ) ? 1 : 0;
         property.DIFFUSEMAP       = ( texture && !x3dom.isa( texture, x3dom.nodeTypes.X3DEnvironmentTextureNode ) ) ||
                                     ( property.CSSHADER && appearance._shader.getDiffuseMap() ) ||
@@ -37184,27 +37186,13 @@ x3dom.shader.DynamicShader.prototype.generateFragmentShader = function ( gl, pro
             }
             else if ( properties.DIFFUSEMAP || properties.TEXT )
             {
-                if ( properties.PIXELTEX )
+                if ( properties.DIFFUSEMAPCHANNEL )
                 {
-                    if ( properties.DIFFUSEMAPCHANNEL )
-                    {
-                        shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, texcoord2)" ) + ";\n";
-                    }
-                    else
-                    {
-                        shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, texcoord)" ) + ";\n";
-                    }
+                    shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, vec2(texcoord2.x, 1.0 - texcoord2.y))" ) + ";\n";
                 }
                 else
                 {
-                    if ( properties.DIFFUSEMAPCHANNEL )
-                    {
-                        shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, vec2(texcoord2.x, 1.0 - texcoord2.y))" ) + ";\n";
-                    }
-                    else
-                    {
-                        shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, vec2(texcoord.x, 1.0 - texcoord.y))" ) + ";\n";
-                    }
+                    shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, vec2(texcoord.x, 1.0 - texcoord.y))" ) + ";\n";
                 }
             }
 
@@ -37417,30 +37405,15 @@ x3dom.shader.DynamicShader.prototype.generateFragmentShader = function ( gl, pro
 
         if ( properties.TEXTURED && ( properties.DIFFUSEMAP || properties.DIFFPLACEMENTMAP || properties.TEXT ) )
         {
-            if ( properties.PIXELTEX )
+            if ( properties.IS_PARTICLE || properties.POINTPROPERTIES )
             {
-                if ( properties.IS_PARTICLE || properties.POINTPROPERTIES )
-                {
-                    shader += "vec2 texCoord = clamp(gl_PointCoord, 0.01, 0.99);\n";
-                }
-                else
-                {
-                    shader += "vec2 texCoord = fragTexcoord;\n";
-                }
+                shader += "vec2 texCoord = clamp(gl_PointCoord, 0.01, 0.99);\n";
             }
             else
             {
-                if ( properties.IS_PARTICLE || properties.POINTPROPERTIES )
-                {
-                    shader += "vec2 texCoord = clamp(gl_PointCoord, 0.01, 0.99);\n";
-                    shader += "texCoord.y = 1.0 - texCoord.y;\n";
-                }
-                else
-                {
-                    shader += "vec2 texCoord = vec2(fragTexcoord.x, 1.0-fragTexcoord.y);\n";
-                }
+                shader += "vec2 texCoord = fragTexcoord;\n";
             }
-            shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, texCoord)" ) + ";\n";
+            shader += "texColor = " + x3dom.shader.decodeGamma( properties, "texture2D(diffuseMap, vec2(texCoord.x, 1.0-texCoord.y))" ) + ";\n";
             shader += "color.a = texColor.a;\n";
 
             if ( properties.BLENDING || properties.IS_PARTICLE || properties.POINTPROPERTIES )
