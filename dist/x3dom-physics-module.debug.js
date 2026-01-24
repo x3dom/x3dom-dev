@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7518
- * Revision: 7d63fcbd5e1afd088ed2076785d96b05f425ff4a
- * Date: Wed Dec 10 16:23:45 2025 -0500
+ * Build : 7519
+ * Revision: f17fa8909e7d1536beaef245ab4b926905c5f01c
+ * Date: Fri Jan 23 23:01:42 2026 -0500
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7518",
-    revision : "7d63fcbd5e1afd088ed2076785d96b05f425ff4a",
-    date     : "Wed Dec 10 16:23:45 2025 -0500"
+    build    : "7519",
+    revision : "f17fa8909e7d1536beaef245ab4b926905c5f01c",
+    date     : "Fri Jan 23 23:01:42 2026 -0500"
 };
 
 /**
@@ -36617,6 +36617,10 @@ x3dom.shader.DynamicShader.prototype.generateVertexShader = function ( gl, prope
         else if ( properties.TEXTRAFO )
         {
             shader += " fragTexcoord = (texTrafoMatrix * vec4(vertTexCoord, 1.0, 1.0)).xy;\n";
+            if ( properties.MULTITEXCOORD )
+            {
+                shader += " fragTexcoord2 = (texTrafoMatrix * vec4(vertTexCoord2, 1.0, 1.0)).xy;\n";
+            }
         }
         else
         {
@@ -37124,6 +37128,14 @@ x3dom.shader.DynamicShader.prototype.generateFragmentShader = function ( gl, pro
                     if ( !properties.TANGENTDATA && ( x3dom.caps.STD_DERIVATIVES || x3dom.caps.WEBGL_VERSION == 2 ) )
                     {
                         shader += "normal = perturb_normal( n, fragPosition.xyz, vec2(texcoord.x, 1.0 - texcoord.y), _normalBias);\n";
+                        if ( properties.NORMALMAPCHANNEL )
+                        {
+                            shader += "normal = perturb_normal( n, fragPosition.xyz, vec2(texcoord2.x, 1.0 - texcoord2.y), _normalBias);\n";
+                        }
+                        else
+                        {
+                            shader += "normal = perturb_normal( n, fragPosition.xyz, vec2(texcoord.x, 1.0 - texcoord.y), _normalBias);\n";
+                        }
                     }
                     else
                     {
@@ -37131,15 +37143,28 @@ x3dom.shader.DynamicShader.prototype.generateFragmentShader = function ( gl, pro
                         shader += "vec3 b = normalize( fragBinormal );\n";
                         shader += "mat3 tangentToWorld = mat3(t, b, n);\n";
 
-                        shader += "normal = texture2D( normalMap, vec2(texcoord.x, 1.0-texcoord.y) ).rgb;\n";
+                        if ( properties.NORMALMAPCHANNEL )
+                        {
+                            shader += "normal = texture2D( normalMap, vec2(texcoord2.x, 1.0-texcoord2.y) ).rgb;\n";
+                        }
+                        else
+                        {
+                            shader += "normal = texture2D( normalMap, vec2(texcoord.x, 1.0-texcoord.y) ).rgb;\n";
+                        }
                         shader += "normal = 2.0 * normal - 1.0;\n";
                         shader += "normal = normalize( normal * tangentToWorld );\n";
                     }
                 }
                 else if ( properties.NORMALSPACE == "OBJECT" )
                 {
-                    shader += "normal = texture2D( normalMap, vec2(texcoord.x, 1.0-texcoord.y) ).rgb;\n";
-
+                    if ( properties.NORMALMAPCHANNEL )
+                    {
+                        shader += "normal = texture2D( normalMap, vec2(texcoord2.x, 1.0-texcoord2.y) ).rgb;\n";
+                    }
+                    else
+                    {
+                        shader += "normal = texture2D( normalMap, vec2(texcoord.x, 1.0-texcoord.y) ).rgb;\n";
+                    }
                     shader += "normal = 2.0 * normal - 1.0;\n";
                     shader += "normal = (mat_n * vec4(normal, 0.0)).xyz;\n";
                     shader += "normal = normalize(normal);\n";
