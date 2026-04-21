@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7520
- * Revision: 50be2aedd6d06e298730d9e0cb414262c03c0c2e
- * Date: Fri Jan 23 23:06:38 2026 -0500
+ * Build : 7521
+ * Revision: b17b3ac307ed684a61ac0ed38b145977f1b999ee
+ * Date: Tue Apr 21 16:05:00 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7520",
-    revision : "50be2aedd6d06e298730d9e0cb414262c03c0c2e",
-    date     : "Fri Jan 23 23:06:38 2026 -0500"
+    build    : "7521",
+    revision : "b17b3ac307ed684a61ac0ed38b145977f1b999ee",
+    date     : "Tue Apr 21 16:05:00 2026 -0400"
 };
 
 /**
@@ -54465,6 +54465,7 @@ x3dom.registerNodeType(
                             case ".gltf" :  return this.ContentType.GLTF;
                             case ".glb"  :  return this.ContentType.GLB;
                             case ".json" :  return this.ContentType.X3DJ;
+                            case ".x3dj" :  return this.ContentType.X3DJ;
                         }
                     }
                 }
