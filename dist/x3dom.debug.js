@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7521
- * Revision: b17b3ac307ed684a61ac0ed38b145977f1b999ee
- * Date: Tue Apr 21 16:05:00 2026 -0400
+ * Build : 7522
+ * Revision: dfb16803dd9c1e7ca0f96b40be206d12be17b780
+ * Date: Tue Apr 21 22:47:13 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7521",
-    revision : "b17b3ac307ed684a61ac0ed38b145977f1b999ee",
-    date     : "Tue Apr 21 16:05:00 2026 -0400"
+    build    : "7522",
+    revision : "dfb16803dd9c1e7ca0f96b40be206d12be17b780",
+    date     : "Tue Apr 21 22:47:13 2026 -0400"
 };
 
 /**
@@ -53760,6 +53760,7 @@ x3dom.registerNodeType(
             {
                 this._updateCycleStopTime();
             }
+            this.TIME_EPSILON = 0.01;//allowable catchup delay in seconds
 
             this._backupStartTime = this._vf.startTime;
             this._backupStopTime = this._vf.stopTime;
@@ -53866,7 +53867,12 @@ x3dom.registerNodeType(
                         this._vf.startTime = this._backupStartTime;
                         return;
                     }
-                    this._vf.startTime = Date.now() / 1000; //needs to be refreshed since it can be slow to get here
+
+                    const now = Date.now() / 1000;
+                    if ( now - this._vf.startTime < this.TIME_EPSILON ) // if slightly delayed
+                    {
+                        this._vf.startTime = now; //needs to be refreshed since it can be slow to get here
+                    }
 
                     this._backupStartTime = this._vf.startTime;
                     this._updateCycleStopTime();
