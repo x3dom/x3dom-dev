@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7522
- * Revision: dfb16803dd9c1e7ca0f96b40be206d12be17b780
- * Date: Tue Apr 21 22:47:13 2026 -0400
+ * Build : 7523
+ * Revision: 5ba25b1af508053e37fa1ad53b09f443e2f67925
+ * Date: Wed Apr 22 15:41:37 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7522",
-    revision : "dfb16803dd9c1e7ca0f96b40be206d12be17b780",
-    date     : "Tue Apr 21 22:47:13 2026 -0400"
+    build    : "7523",
+    revision : "5ba25b1af508053e37fa1ad53b09f443e2f67925",
+    date     : "Wed Apr 22 15:41:37 2026 -0400"
 };
 
 /**
@@ -53756,7 +53756,7 @@ x3dom.registerNodeType(
             this._cycleStopTime = 0;
             this._activatedTime = 0;
 
-            if ( this._vf.startTime > 0 )
+            if ( this._vf.startTime > 0 && this._vf.startTime < this._vf.stopTime )
             {
                 this._updateCycleStopTime();
             }
