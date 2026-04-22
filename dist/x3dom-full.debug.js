@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7524
- * Revision: b7a3642af7fa93ca59e1de270336e3e8efe28ece
- * Date: Wed Apr 22 16:52:01 2026 -0400
+ * Build : 7525
+ * Revision: 1ababa215711e56a6da2698eee19e320d6c1b9c7
+ * Date: Wed Apr 22 16:55:47 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7524",
-    revision : "b7a3642af7fa93ca59e1de270336e3e8efe28ece",
-    date     : "Wed Apr 22 16:52:01 2026 -0400"
+    build    : "7525",
+    revision : "1ababa215711e56a6da2698eee19e320d6c1b9c7",
+    date     : "Wed Apr 22 16:55:47 2026 -0400"
 };
 
 /**
