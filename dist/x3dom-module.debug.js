@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7523
- * Revision: 5ba25b1af508053e37fa1ad53b09f443e2f67925
- * Date: Wed Apr 22 15:41:37 2026 -0400
+ * Build : 7524
+ * Revision: b7a3642af7fa93ca59e1de270336e3e8efe28ece
+ * Date: Wed Apr 22 16:52:01 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7523",
-    revision : "5ba25b1af508053e37fa1ad53b09f443e2f67925",
-    date     : "Wed Apr 22 15:41:37 2026 -0400"
+    build    : "7524",
+    revision : "b7a3642af7fa93ca59e1de270336e3e8efe28ece",
+    date     : "Wed Apr 22 16:52:01 2026 -0400"
 };
 
 /**
@@ -41446,9 +41446,20 @@ x3dom.registerNodeType(
              * @instance
              */
             this.addField_SFBool( ctx, "enabled", true );
+
+            /**
+             * Description of the sensor node
+             * @var {x3dom.fields.SFString} description
+             * @memberof x3dom.nodeTypes.X3DSensorNode
+             * @initvalue ""
+             * @field x3d
+             * @instance
+             */
+            this.addField_SFString( ctx, "description", "" );
         }
     )
 );
+
 /** @namespace x3dom.nodeTypes */
 /*
  * X3DOM JavaScript Library
@@ -68728,6 +68739,17 @@ x3dom.registerNodeType(
                 if ( this._vf.enabled )
                 {
                     this.postMessage( "isOver", true );
+                    const ns = this._nameSpace;
+                    const inline = ns.superInlineNode;
+                    const nameSpaceID =
+                        inline && inline._DEF ? inline._DEF :
+                            inline ? inline._vf.url[ 0 ] :
+                                ns.name || "name scope";
+                    x3dom.debug.logInfo(
+                        "Pointer sensed by " +
+                        nameSpaceID + "/" +
+                        this._DEF + ": " +
+                        this._vf.description );
                 }
             },
 
