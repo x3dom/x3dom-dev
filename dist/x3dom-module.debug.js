@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7525
- * Revision: 1ababa215711e56a6da2698eee19e320d6c1b9c7
- * Date: Wed Apr 22 16:55:47 2026 -0400
+ * Build : 7526
+ * Revision: 65238b9086a172275a7730e99f9d35944892b704
+ * Date: Mon Oct 12 01:38:40 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7525",
-    revision : "1ababa215711e56a6da2698eee19e320d6c1b9c7",
-    date     : "Wed Apr 22 16:55:47 2026 -0400"
+    build    : "7526",
+    revision : "65238b9086a172275a7730e99f9d35944892b704",
+    date     : "Mon Oct 12 01:38:40 2026 -0400"
 };
 
 /**
@@ -432,10 +432,10 @@ x3dom.debug = {
      * @param msg the log message
      * @param logType the type of the log message. One of INFO, WARNING, ERROR or EXCEPTION.
      */
-    doLog : function ( msg, logType )
+    doLog : function ( msg, logType, out = true )
     {
         // If logging is deactivated do nothing and simply return
-        if ( !x3dom.debug.isActive )
+        if ( !x3dom.debug.isActive || !out )
         {
             return;
         }
@@ -522,9 +522,9 @@ x3dom.debug = {
      *
      * @param msg
      */
-    logInfo : function ( msg )
+    logInfo : function ( msg, out = true )
     {
-        x3dom.debug.doLog( msg, x3dom.debug.INFO );
+        x3dom.debug.doLog( msg, x3dom.debug.INFO, out );
     },
 
     /**
@@ -3101,6 +3101,10 @@ x3dom.Viewarea.prototype.showAll = function ( axis, updateCenterOfRotation )
     var min = x3dom.fields.SFVec3f.copy( scene._lastMin );
     var max = x3dom.fields.SFVec3f.copy( scene._lastMax );
 
+    var dia = max.subtract( min );
+    var dia2 = dia.multiply( 0.5 );
+    var center = min.add( dia2 );
+
     var x = "x",
         y = "y",
         z = "z";
@@ -3138,10 +3142,6 @@ x3dom.Viewarea.prototype.showAll = function ( axis, updateCenterOfRotation )
     var fov = viewpoint.getFieldOfView();
 
     var isOrtho = x3dom.isa( viewpoint, x3dom.nodeTypes.OrthoViewpoint );
-
-    var dia = max.subtract( min );
-    var dia2 = dia.multiply( 0.5 );
-    var center = min.add( dia2 );
 
     if ( updateCenterOfRotation )
     {
@@ -3300,13 +3300,14 @@ x3dom.Viewarea.prototype.resetNavHelpers = function ()
  * Upright View
  *
  */
-x3dom.Viewarea.prototype.uprightView = function ()
+x3dom.Viewarea.prototype.uprightView = function ( up = new x3dom.fields.SFVec3f( 0, 1, 0 ) )
 {
+    up = up?.normalize() || new x3dom.fields.SFVec3f( 0, 1, 0 );
     var mat = this.getViewMatrix().inverse();
 
     var from = mat.e3();
     var at = from.subtract( mat.e2() );
-    var up = new x3dom.fields.SFVec3f( 0, 1, 0 );
+    //var up = new x3dom.fields.SFVec3f( 0, 1, 0 );
 
     var s = mat.e2().cross( up ).normalize();
     var v = s.cross( up ).normalize();
@@ -10129,7 +10130,7 @@ x3dom.fields.MFString.prototype.toString = function ()
     var str = "";
     for ( var i = 0, n = this.length; i < n; i++ )
     {
-        str = str + this[ i ] + " ";
+        str = str + "\"" + this[ i ] + "\"" + " ";
     }
     return str;
 };
@@ -11740,12 +11741,12 @@ x3dom.NodeNameSpace.prototype.removeSpace = function ( space )
  *
  * @param url
  */
-x3dom.NodeNameSpace.prototype.setBaseURL = function ( url )
+x3dom.NodeNameSpace.prototype.setBaseURL = function ( url, options = { log: true } )
 {
     var i = url.lastIndexOf( "/" );
     this.baseURL = ( i >= 0 ) ? url.substr( 0, i + 1 ) : "";
-
-    x3dom.debug.logInfo( "setBaseURL: " + this.baseURL );
+    const log = this.baseURL > 0 ? options?.log : false;
+    x3dom.debug.logInfo( "setBaseURL: " + this.baseURL, log );
 };
 
 /**
@@ -31175,12 +31176,12 @@ x3dom.glTF2Loader.prototype._generateX3DImageTexture = function ( texture, conta
 
     if ( texture.extensions )
     {
-        if ( texture.extensions.EXT_texture_webp && texture.extensions.EXT_texture_webp.source )
+        if ( texture.extensions.EXT_texture_webp && "source" in texture.extensions.EXT_texture_webp )
         {
             var extImage = this._gltf.images[ texture.extensions.EXT_texture_webp.source ];
             extImageUrl = x3dom.Utils.dataURIToObjectURL( extImage.uri || "" );
         }
-        else if ( texture.extensions.MSFT_texture_dds && texture.extensions.MSFT_texture_dds.source )
+        else if ( texture.extensions.MSFT_texture_dds && "source" in texture.extensions.MSFT_texture_dds )
         {
             var extImage = this._gltf.images[ texture.extensions.MSFT_texture_dds.source ];
             extImageUrl = x3dom.Utils.dataURIToObjectURL( extImage.uri || "" );
@@ -31201,10 +31202,10 @@ x3dom.glTF2Loader.prototype._generateX3DImageTexture = function ( texture, conta
         imagetexture.setAttribute( "containerField", containerField );
     }
 
-    if ( image.uri != undefined || extImageUrl.length > 0 )
+    if ( image && "uri" in image || extImageUrl.length > 0 )
     {
         var MFUrl = extImageUrl.length ? [ "\"" + extImageUrl + "\"" ] : [];
-        if ( image.uri )
+        if ( image && "uri" in image )
         {
             MFUrl.push( "\"" + x3dom.Utils.dataURIToObjectURL( image.uri ) + "\"" );
         }
@@ -41403,8 +41404,8 @@ x3dom.registerNodeType(
              */
             this.addField_SFString( ctx, "title", "" );
 
-            x3dom.debug.logInfo( this._vf.info );
-            x3dom.debug.logInfo( this._vf.title );
+            x3dom.debug.logInfo( this._vf.info, this._vf.info.join( "" ).length > 0 );
+            x3dom.debug.logInfo( this._vf.title, this._vf.title.length > 0 );
         }
     )
 );
@@ -41762,7 +41763,7 @@ x3dom.registerNodeType(
                     this._bboxNode = this._nameSpace.setupTree( bbDom, this._xmlNode.parentElement );
                 }
                 var bbox = this._graph.volume;
-                bboxNode = this._bboxNode;
+                const bboxNode = this._bboxNode;
                 bboxNode._vf.translation = bbox.center;
                 var size = bbox.max.subtract( bbox.min );
                 var margin = bbox.diameter * this._vf.bboxMargin;
@@ -41909,13 +41910,13 @@ x3dom.registerNodeType(
                 }
 
                 //hook for HAnim nodes (and others)
-                this.onBeforeCollectChildNodes( childTransform );
+                this.onBeforeCollectChildNodes( childTransform, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes );
 
                 //HAnimHumanoid overwrites this method
                 this.collectChildNodes( childTransform, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes );
             },
 
-            onBeforeCollectChildNodes : function ( childTransform )//, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes )
+            onBeforeCollectChildNodes : function ( childTransform, drawableCollection, singlePath, invalidateCache, planeMask, clipPlanes )
             {
                 //implemented by derived nodes
             },
@@ -48529,7 +48530,7 @@ x3dom.registerNodeType(
                 {
                     var gM = this._graph.globalMatrix;
                     // check for negative scale
-                    if ( gM.det3( gM._00, gM._01, gM._02, gM._10, gM._11, gM._12, gM._20, gM._21, gM._22 ) < 0 )
+                    if ( gM && gM.det3( gM._00, gM._01, gM._02, gM._10, gM._11, gM._12, gM._20, gM._21, gM._22 ) < 0 )
                     {
                         return !ccw;
                     }
@@ -54283,6 +54284,16 @@ x3dom.registerNodeType(
             this.addField_SFBool( ctx, "load", true );
 
             /**
+             * Specifies whether to log activity in console.
+             * @var {x3dom.fields.SFBool} log
+             * @memberof x3dom.nodeTypes.Inline
+             * @initvalue true
+             * @field x3dom
+             * @instance
+             */
+            this.addField_SFBool( ctx, "log", true );
+
+            /**
              * The description field specifies a textual description.
              * This may be used by browser-specific user interfaces that wish to present users with more detailed information.
              * @var {x3dom.fields.SFString} description
@@ -54554,7 +54565,7 @@ x3dom.registerNodeType(
                             that._nameSpace.doc.needRender = true;
                             that._nameSpace.doc.decrementDownloads();
                             that._nameSpace.doc.needRender = true;
-                            x3dom.debug.logInfo( "Inline: added " + that._vf.url[ that.urlIndex ] + " to scene." );
+                            x3dom.debug.logInfo( "Inline: added " + that._vf.url[ that.urlIndex ] + " to scene.", that._vf.log );
                         }, 1000 );
                     }
                     that._nameSpace.importNodes( newScene._nameSpace );
@@ -54611,7 +54622,7 @@ x3dom.registerNodeType(
                         }
                         else if ( xhr.status == 200 || xhr.status == 0 )
                         {
-                            x3dom.debug.logInfo( "Inline: downloading " + that._vf.url[ that.urlIndex ] + " done." );
+                            x3dom.debug.logInfo( "Inline: downloading " + that._vf.url[ that.urlIndex ] + " done.", that._vf.log );
 
                             if ( contentType == undefined )
                             {
@@ -54769,11 +54780,11 @@ x3dom.registerNodeType(
 
                 if ( ( url[ 0 ] === "/" ) || ( url.indexOf( ":" ) >= 0 ) )
                 {
-                    nameSpace.setBaseURL( url );
+                    nameSpace.setBaseURL( url, { log: this._vf.log } );
                 }
                 else
                 {
-                    nameSpace.setBaseURL( this._nameSpace.baseURL + url );
+                    nameSpace.setBaseURL( this._nameSpace.baseURL + url, { log: this._vf.log } );
                 }
 
                 this._nameSpace.addSpace( nameSpace );
