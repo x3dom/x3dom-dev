@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.4-dev
- * Build : 7526
- * Revision: 65238b9086a172275a7730e99f9d35944892b704
- * Date: Mon Oct 12 01:38:40 2026 -0400
+ * Build : 7527
+ * Revision: a1e12d27c555801f5bc18523919da79d0162816a
+ * Date: Thu Oct 15 16:51:46 2026 -0400
  */
 /**
  * X3DOM JavaScript Library
@@ -29,9 +29,9 @@ var x3dom = {
 
 x3dom.about = {
     version  : "1.8.4-dev",
-    build    : "7526",
-    revision : "65238b9086a172275a7730e99f9d35944892b704",
-    date     : "Mon Oct 12 01:38:40 2026 -0400"
+    build    : "7527",
+    revision : "a1e12d27c555801f5bc18523919da79d0162816a",
+    date     : "Thu Oct 15 16:51:46 2026 -0400"
 };
 
 /**
@@ -58824,7 +58824,7 @@ x3dom.TurntableNavigation.prototype.animateTo = function ( view, target, prev, d
 
     if ( view._mixer._isVPtarget )
     {
-        targetMat = x3dom.fields.SFMatrix4f.lookAt( target._vf.position, target.getCenterOfRotation(), new x3dom.fields.SFVec3f( 0, 1, 0 ) );
+        targetMat = x3dom.fields.SFMatrix4f.lookAt( target._vf.position, target.getCenterOfRotation(), new x3dom.fields.SFVec3f( 0, 1, 0 ) ).inverse();
     }
     else
     {targetMat = target;}
